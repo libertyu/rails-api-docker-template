@@ -1,24 +1,80 @@
-# README
+# 環境構築手順
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. リポジトリをクローン
 
-Things you may want to cover:
+```
+git cloen https://github.com/libertyu/rails-api-docker-template.git
+```
 
-* Ruby version
+2. ビルド
 
-* System dependencies
+```
+docker-compose build
 
-* Configuration
+```
 
-* Database creation
+3. docker 起動
 
-* Database initialization
+```
+<!-- ActiveRecordやサーバーログみたい時はこれを実行 -->
+docker-compose up
 
-* How to run the test suite
+<!-- バックグラウンド起動 -->
+docker-compose up -d
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# コマンド
 
-* Deployment instructions
+コンテナ停止
 
-* ...
+```
+docker-compose up -d
+```
+
+コンテナ停止
+
+```
+docker-compose down
+```
+
+コンテナに入る
+
+```
+docker container exec -it <コンテナ名> bash
+```
+
+DB 作成
+
+```
+docker-compose run web rails db:create
+```
+
+DB リセット
+
+```
+docker-compose run web rails db:reset
+```
+
+マイグレーション実行
+
+```
+docker-compose run web rails db:migrate
+```
+
+コンソール実行
+
+```
+docker-compose run web rails console
+```
+
+コントローラー作成
+
+```
+docker-compose run web rails g controller <コントローラー名>
+```
+
+モデル作成
+
+```
+docker-compose run web rails g model <モデル名>
+```
