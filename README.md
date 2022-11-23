@@ -78,3 +78,17 @@ docker-compose run web rails g controller <コントローラー名>
 ```
 docker-compose run web rails g model <モデル名>
 ```
+
+gem のインストール
+※【前提】Gemfile に gem を記載する
+
+```
+docker-compose run web bundle install
+docker-compose build
+```
+
+rubocop 実行
+
+```
+docker-compose run web rubocop -A <ディレクトリ名>
+```
